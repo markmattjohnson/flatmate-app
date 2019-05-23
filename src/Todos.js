@@ -1,9 +1,31 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import uid from "uid";
+import "./todo.css";
 
 function Todo({ todo, index }) {
   return <div className="todo">{todo.text}</div>;
+}
+
+function TodoForm({ addTodo }) {
+  const [value, setValue] = useState("");
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (!value) return;
+    addTodo(value);
+    setValue("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        className="input"
+        value={value}
+        onChange={event => setValue(event.target.value)}
+      />
+    </form>
+  );
 }
 
 function AppTodo() {
@@ -14,11 +36,12 @@ function AppTodo() {
   ]);
 
   return (
-    <div className="todoforapp">
+    <div className="todopage">
       <div className="todo-list">
         {todos.map((todo, index) => (
           <Todo key={index} index={index} todo={todo} />
         ))}
+        <TodoForm addTodo={addTodo} />
       </div>
     </div>
   );
