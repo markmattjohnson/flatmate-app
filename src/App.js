@@ -55,7 +55,9 @@ function App() {
 
   return (
     <div className="app">
+      <div>shoppingcart</div>
       <Grid>{cardsInEk}</Grid>
+      <div>Warenrubriken</div>
       <Cards clickHandler={addFruit} />
     </div>
   );

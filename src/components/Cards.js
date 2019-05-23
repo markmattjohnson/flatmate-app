@@ -3,8 +3,8 @@ import Card from "./Card";
 const Cards = props => {
   return (
     <div>
-      <Card title="Card1" clickHandler={props.clickHandler} />
-      <Card title="Card2" />
+      <Card title="Zuletzt verwendet" clickHandler={props.clickHandler} />
+      <Card title="Obst & Gemüse" />
     </div>
   );
 };
