@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import "./todo.css";
 
 function Todo({ todo, index }) {
@@ -22,6 +21,7 @@ function TodoForm({ addTodo }) {
         type="text"
         className="input"
         value={value}
+        placeholder="Todo hinzufügen"
         onChange={event => setValue(event.target.value)}
       />
     </form>
@@ -34,6 +34,11 @@ function AppTodo() {
     { todo: "Toilette putzen", isCompleted: false },
     { todo: "Müll runterbringen", isCompleted: false }
   ]);
+
+  const addTodo = text => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+  };
 
   return (
     <div className="todopage">
