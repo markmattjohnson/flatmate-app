@@ -32,12 +32,6 @@ const Card = props => {
     { name: "Ananas" }
   ]);
 
-  // const removeTodo = index => {
-  //   const newTodos = [...cards];
-  //   newTodos.splice(index, 1);
-  //   setCards(newTodos);
-  // };
-
   const close = () => {
     setExpanded(!expanded);
   };
@@ -60,6 +54,7 @@ const Card = props => {
       background: mediumseagreen;
     }
   `;
+
   const fruits = cards.map((frucht, index) => (
     <Box key={index} onClick={props.clickHandler}>
       {frucht.name}
