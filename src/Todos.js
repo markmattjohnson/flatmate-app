@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./todo.css";
 
-function Todo({ todo, index, finishedTodo }) {
+function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
     <div
       style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
@@ -10,6 +10,7 @@ function Todo({ todo, index, finishedTodo }) {
       {todo.text}
       <div>
         <button onClick={() => finishedTodo(index)}>Erledigt</button>
+        <button onClick={() => deleteTodo(index)}>X</button>
       </div>
     </div>
   );
@@ -56,6 +57,12 @@ function AppTodo() {
     setTodos(newTodos);
   };
 
+  const deleteTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <div className="todopage">
       <div className="todo-list">
@@ -65,6 +72,7 @@ function AppTodo() {
             index={index}
             todo={todo}
             finishedTodo={finishedTodo}
+            deleteTodo={deleteTodo}
           />
         ))}
         <TodoForm addTodo={addTodo} />
