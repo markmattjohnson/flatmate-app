@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import "./todo.css";
 
-function Todo({ todo, index }) {
-  return <div className="todo">{todo.text}</div>;
+function Todo({ todo, index, finishedTodo }) {
+  return (
+    <div
+      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+      className="todo"
+    >
+      {todo.text}
+      <div>
+        <button onClick={() => finishedTodo(index)}>Erledigt</button>
+      </div>
+    </div>
+  );
 }
 
 function TodoForm({ addTodo }) {
@@ -30,9 +40,9 @@ function TodoForm({ addTodo }) {
 
 function AppTodo() {
   const [todos, setTodos] = useState([
-    { todo: "Spülmaschine ausräumen", isCompleted: false },
-    { todo: "Toilette putzen", isCompleted: false },
-    { todo: "Müll runterbringen", isCompleted: false }
+    { text: "Spülmaschine ausräumen", isCompleted: false },
+    { text: "Toilette putzen", isCompleted: false },
+    { text: "Müll runterbringen", isCompleted: false }
   ]);
 
   const addTodo = text => {
@@ -40,11 +50,22 @@ function AppTodo() {
     setTodos(newTodos);
   };
 
+  const finishedTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
+
   return (
     <div className="todopage">
       <div className="todo-list">
         {todos.map((todo, index) => (
-          <Todo key={index} index={index} todo={todo} />
+          <Todo
+            key={index}
+            index={index}
+            todo={todo}
+            finishedTodo={finishedTodo}
+          />
         ))}
         <TodoForm addTodo={addTodo} />
       </div>
