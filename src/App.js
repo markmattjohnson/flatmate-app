@@ -8,18 +8,15 @@ function App() {
   const [cards, setCards] = useState([
     {
       name: "Bananen",
-      id: uid(),
-      amount: 1
+      id: uid()
     },
     {
       name: "Äpfel",
-      id: uid(),
-      amount: 1
+      id: uid()
     },
     {
       name: "Birnen",
-      id: uid(),
-      amount: 1
+      id: uid()
     }
   ]);
 
@@ -38,25 +35,19 @@ function App() {
   const Grid = styled.section`
     display: grid;
     grid-gap: 10px;
+    margin-left: 160px;
+    margin-right: 100px;
+    margin-bottom: 30px;
     grid-template-columns: repeat(auto-fit, ${props => props.size || "100"}px);
     grid-auto-rows: ${props => props.size || "100"}px;
   `;
 
-  const Box = styled.div`
-    background: hotpink;
-    border-radius: ${props => props.radius || 0}px;
-
-    &:hover {
-      background: mediumseagreen;
-    }
-  `;
   const cardsInEk = cards.map(obj => {
     return (
       <CardInEK
         key={obj.id}
         index={obj.id}
         text={obj.name}
-        amount={obj.amount}
         onClickHandler={onClickHandler}
       />
     );
