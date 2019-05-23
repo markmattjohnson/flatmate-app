@@ -25,7 +25,6 @@ function Shoppingcarts() {
   };
 
   const onClickHandler = event => {
-    console.log(event.target.getAttribute("data-id"));
     const dataId = event.target.getAttribute("data-id");
     const cardsNew = cards.filter(card => card.id !== dataId);
 
