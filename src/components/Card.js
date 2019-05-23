@@ -20,25 +20,52 @@ const Cardbody = styled.div`
   padding: 5px;
 `;
 
-const Futter = styled.div`
-  height: 100px;
-  width: 100px;
-  background-color: blanchedalmond;
-  border-radius: 20px;
-`;
-
 const H4 = styled.h4`
   margin: 0;
 `;
 
 const Card = props => {
   const [expanded, setExpanded] = useState(false);
+  const [cards, setCards] = useState([
+    { name: "Kakao" },
+    { name: "Bohnen" },
+    { name: "Ananas" }
+  ]);
+
+  // const removeTodo = index => {
+  //   const newTodos = [...cards];
+  //   newTodos.splice(index, 1);
+  //   setCards(newTodos);
+  // };
 
   const close = () => {
     setExpanded(!expanded);
   };
 
   const status = expanded ? "expanded" : "closed";
+
+  const Grid = styled.section`
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, ${props => props.size || "100"}px);
+    grid-auto-rows: ${props => props.size || "100"}px;
+  `;
+
+  const Box = styled.div`
+    background: hotpink;
+    border-radius: ${props => props.radius || 0}px;
+    cursor: pointer;
+
+    &:hover {
+      background: mediumseagreen;
+    }
+  `;
+  const fruits = cards.map((frucht, index) => (
+    <Box key={index} onClick={props.clickHandler}>
+      {frucht.name}
+    </Box>
+  ));
+
   return (
     <StyledCard className={`card ${expanded ? "expanded" : ""}`}>
       <Cardheader onClick={close}>
@@ -46,7 +73,7 @@ const Card = props => {
       </Cardheader>
       <div className={status}>
         <Cardbody>
-          <Futter />
+          <Grid size={50}>{fruits}</Grid>
         </Cardbody>
       </div>
     </StyledCard>
