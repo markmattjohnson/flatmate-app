@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Cards from "./components/Cards";
 import styled from "styled-components";
-import CardInEK from "./components/CardInEK";
+import CardInSh from "./components/CardInSh";
 import uid from "uid";
 
 function Shoppingcarts() {
@@ -43,7 +43,7 @@ function Shoppingcarts() {
 
   const cardsInEk = cards.map(obj => {
     return (
-      <CardInEK
+      <CardInSh
         key={obj.id}
         index={obj.id}
         text={obj.name}
