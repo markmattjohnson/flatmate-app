@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Cards from "./components/Cards";
 import styled from "styled-components";
-import CardInSh from "./components/CardInSh";
+import CardInShoppingcart from "./components/CardInShoppingcart";
 import uid from "uid";
 
 function Shoppingcarts() {
@@ -41,9 +41,9 @@ function Shoppingcarts() {
     grid-auto-rows: ${props => props.size || "100"}px;
   `;
 
-  const cardsInShoppingCard = cards.map(obj => {
+  const cardsInShoppingCart = cards.map(obj => {
     return (
-      <CardInSh
+      <CardInShoppingcart
         key={obj.id}
         index={obj.id}
         text={obj.name}
@@ -55,7 +55,7 @@ function Shoppingcarts() {
   return (
     <div className="app">
       <div>shoppingcart</div>
-      <Grid>{cardsInShoppingCard}</Grid>
+      <Grid>{cardsInShoppingCart}</Grid>
       <div>Warenrubriken</div>
       <Cards clickHandler={addFruit} />
     </div>
