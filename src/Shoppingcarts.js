@@ -41,7 +41,7 @@ function Shoppingcarts() {
     grid-auto-rows: ${props => props.size || "100"}px;
   `;
 
-  const cardsInEk = cards.map(obj => {
+  const cardsInShoppingCard = cards.map(obj => {
     return (
       <CardInSh
         key={obj.id}
@@ -55,7 +55,7 @@ function Shoppingcarts() {
   return (
     <div className="app">
       <div>shoppingcart</div>
-      <Grid>{cardsInEk}</Grid>
+      <Grid>{cardsInShoppingCard}</Grid>
       <div>Warenrubriken</div>
       <Cards clickHandler={addFruit} />
     </div>
