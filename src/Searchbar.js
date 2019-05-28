@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import Cards from "./components/Cards";
-import styled from "styled-components";
 import CardInShoppingcart from "./components/CardInShoppingcart";
+import styled from "styled-components";
 import uid from "uid";
 
-function Shoppingcarts() {
+function Searchbar() {
   const [cards, setCards] = useState([
     {
       name: "Bananen",
@@ -19,10 +18,6 @@ function Shoppingcarts() {
       id: uid()
     }
   ]);
-
-  const addFruit = event => {
-    setCards([...cards, { name: event.target.innerText, id: uid() }]);
-  };
 
   const onClickHandler = event => {
     const dataId = event.target.getAttribute("data-id");
@@ -54,11 +49,8 @@ function Shoppingcarts() {
 
   return (
     <div className="app">
-      <div>shoppingcart</div>
       <Grid>{cardsInShoppingCart}</Grid>
-      <div>Warenrubriken</div>
-      <Cards clickHandler={addFruit} />
     </div>
   );
 }
-export default Shoppingcarts;
+export default Searchbar;
