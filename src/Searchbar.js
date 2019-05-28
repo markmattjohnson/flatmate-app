@@ -49,6 +49,7 @@ function Searchbar() {
 
   return (
     <div className="app">
+      <input type="text" className="input" placeholder="Search..." />
       <Grid>{cardsInShoppingCart}</Grid>
     </div>
   );
