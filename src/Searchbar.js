@@ -103,13 +103,6 @@ function Searchbar() {
   };
   useEffect(() => console.log(filteredCards));
 
-  //   const filteredCards = this.props.cards.filter(card => {
-  //     return card.name.indexOf(this.state.name) !== -1;
-  //   });
-
-  //   const filteredCardsSearch = cards.map(card) => {
-  //       return <CardInShoppingcart card={card} key={card.id} />
-  //   }
   const cardz = searchValue === "" ? cards : filteredCards;
   const cardsInShoppingCart = cardz.map(obj => {
     return (
