@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import CardInShoppingcart from "./components/CardInShoppingcart";
+import React, { useState } from "react";
+import CardInShoppingcart from "./CardInShoppingcart";
+import Cards from "./Cards";
 import styled from "styled-components";
 import uid from "uid";
 
@@ -54,18 +55,22 @@ function Searchbar() {
       id: uid()
     }
   ]);
+
   const [filteredCards, setFilteredCards] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   const Grid = styled.section`
-    display: grid;
-    grid-gap: 10px;
-    margin-left: 160px;
-    margin-right: 100px;
-    margin-bottom: 30px;
-    grid-template-columns: repeat(auto-fit, ${props => props.size || "100"}px);
-    grid-auto-rows: ${props => props.size || "100"}px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    border: 1px solid black;
+    min-height: 150px;
+    margin-bottom: 10px;
   `;
+
+  const addFruit = event => {
+    setCards([...cards, { name: event.target.innerText, id: uid() }]);
+  };
 
   const onClickHandler = event => {
     const dataId = event.target.getAttribute("data-id");
@@ -75,36 +80,26 @@ function Searchbar() {
   };
 
   const onClickHandlerSearch = event => {
-    const cardsNames = cards.map(fruit => fruit.name);
+    const cardsNames = cards.map(product => product.name);
     const value = event.target.value.toLowerCase();
-    // console.log(typeof value);
     setSearchValue(value);
 
     const cardsNewNames = cardsNames.filter(cardsName =>
       cardsName.toLowerCase().includes(value)
     );
-    console.log(cardsNewNames);
     let newCards = [];
     cardsNewNames.forEach(cardsName => {
-      //console.log(newCards);
       cards.forEach(card => {
         if (card.name === cardsName) {
-          //   console.log("IST GLEICH!!!");
-          //   console.log(card.name);
-          //   console.log(cardsName);
           newCards = [...newCards, card];
         }
       });
     });
-    console.log(newCards);
     setFilteredCards(newCards);
-
-    // setCards(cardsNew);
   };
-  useEffect(() => console.log(filteredCards));
 
-  const cardz = searchValue === "" ? cards : filteredCards;
-  const cardsInShoppingCart = cardz.map(obj => {
+  const cardList = searchValue === "" ? cards : filteredCards;
+  const cardsInShoppingCart = cardList.map(obj => {
     return (
       <CardInShoppingcart
         key={obj.id}
@@ -124,6 +119,7 @@ function Searchbar() {
         onChange={onClickHandlerSearch}
       />
       <Grid>{cardsInShoppingCart}</Grid>
+      <Cards clickHandler={addFruit} />
     </div>
   );
 }

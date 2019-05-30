@@ -1,9 +1,29 @@
 import "../card.css";
 import styled from "styled-components";
 import React, { useState } from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBeer,
+  faCoffee,
+  faWineGlassAlt,
+  faStroopwafel,
+  faAppleAlt,
+  faCookie
+} from "@fortawesome/free-solid-svg-icons";
+library.add(
+  fab,
+  faBeer,
+  faCoffee,
+  faWineGlassAlt,
+  faStroopwafel,
+  faAppleAlt,
+  faCookie
+);
 
 const StyledCard = styled.div`
-  width: 80%;
+  width: 100%;
   border: 1px solid black;
   margin: auto;
   margin-bottom: 20px;
@@ -55,20 +75,23 @@ const Card = props => {
     }
   `;
 
-  const fruits = cards.map((frucht, index) => (
+  const products = cards.map((product, index) => (
     <Box key={index} onClick={props.clickHandler}>
-      {frucht.name}
+      {product.name}
     </Box>
   ));
 
   return (
     <StyledCard className={`card ${expanded ? "expanded" : ""}`}>
       <Cardheader onClick={close}>
-        <H4>{props.title}</H4>
+        <H4>
+          {props.title}
+          <FontAwesomeIcon icon="stroopwafel" />
+        </H4>
       </Cardheader>
       <div className={status}>
         <Cardbody>
-          <Grid size={50}>{fruits}</Grid>
+          <Grid size={50}>{products}</Grid>
         </Cardbody>
       </div>
     </StyledCard>
