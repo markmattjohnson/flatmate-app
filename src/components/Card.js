@@ -86,6 +86,7 @@ const Card = props => {
       <Cardheader onClick={close}>
         <H4>
           {props.title}
+          <hr />
           <FontAwesomeIcon icon="stroopwafel" />
         </H4>
       </Cardheader>

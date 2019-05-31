@@ -1,21 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledHeader = styled.header`
-  background: yellowgreen;
-  padding: 20px;
+const HeaderContainer = styled.div`
+  grid-row: 1;
 `;
 
-const Navigation = styled.nav`
-  display: flex;
-  justify-content: center;
+const HeaderImage = styled.img`
+  width: 100%;
 `;
+
+// const Navigation = styled.nav`
+//   display: flex;
+//   justify-content: center;
+// `;
 
 function Header() {
   return (
-    <StyledHeader>
-      <Navigation />
-    </StyledHeader>
+    <HeaderContainer>
+      <HeaderImage src="/images/header.jpg" alt="kitchen" />
+    </HeaderContainer>
   );
 }
 

@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 80px auto 40px;
+  grid-template-rows: 80px auto;
   text-align: center;
   height: 100vh;
 `;
