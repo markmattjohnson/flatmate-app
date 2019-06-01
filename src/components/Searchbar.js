@@ -8,51 +8,78 @@ function Searchbar() {
   const [cards, setCards] = useState([
     {
       name: "Ananas",
-      id: uid()
+      id: uid(),
+      image: "./images/pineapple.jpg"
     },
     {
       name: "Apfel",
-      id: uid()
+      id: uid(),
+      image: "./images/apple.jpg"
+    },
+    {
+      name: "Brot",
+      id: uid(),
+      image: "./images/bread.jpg"
     },
     {
       name: "Aprikose",
-      id: uid()
+      id: uid(),
+      image: "./images/apricot.jpg"
+    },
+    {
+      name: "Blaubeere",
+      id: uid(),
+      image: "./images/blueberries.jpg"
     },
     {
       name: "Avokado",
-      id: uid()
+      id: uid(),
+      image: "./images/avocado.jpg"
     },
     {
       name: "Banane",
-      id: uid()
+      id: uid(),
+      image: "./images/banana.jpg"
     },
     {
       name: "Birne",
-      id: uid()
+      id: uid(),
+      image: "./images/pear.jpg"
     },
     {
-      name: "Ananassaft",
-      id: uid()
+      name: "Rhabarber",
+      id: uid(),
+      image: "./images/rhuburb.jpg"
     },
     {
-      name: "Apfelmus",
-      id: uid()
+      name: "Gurke",
+      id: uid(),
+      image: "./images/cucumber.jpg"
+    },
+    {
+      name: "Erdbeere",
+      id: uid(),
+      image: "./images/strawberries.jpg"
+    },
+    {
+      name: "watermelon",
+      id: uid(),
+      image: "./images/watermelon.jpg"
+    },
+    {
+      name: "Nutella",
+      id: uid(),
+      image: "./images/nutella.jpg"
+    },
+    {
+      name: "Kaffeebohnen",
+      id: uid(),
+      image: "./images/coffeebeans.jpg"
     },
     {
       name: "Apfelfächer",
-      id: uid()
-    },
-    {
-      name: "Avokadocreme",
-      id: uid()
-    },
-    {
-      name: "Bananeneis",
-      id: uid()
-    },
-    {
-      name: "Birnensaft",
-      id: uid()
+      id: uid(),
+      image: "./images/apfelfächer.jpg"
     }
   ]);
 
@@ -73,6 +100,7 @@ function Searchbar() {
   };
 
   const onClickHandler = event => {
+    console.log(event.target, "Click");
     const dataId = event.target.getAttribute("data-id");
     const cardsNew = cards.filter(card => card.id !== dataId);
 
@@ -98,13 +126,32 @@ function Searchbar() {
     setFilteredCards(newCards);
   };
 
-  const cardList = searchValue === "" ? cards : filteredCards;
+  const cardList = searchValue === "" ? [] : filteredCards;
+
+  // function CardList({ cards }) {
+  //   return (
+  //     <section>
+  //       {cards.map(card => (
+  //         <CardInShoppingcart
+  //           key={card.id}
+  //           index={card.id}
+  //           text={card.name}
+  //           image={card.image}
+  //           onClickHandler={onClickHandler}
+  //           onClickHandlerSearch={onClickHandlerSearch}
+  //         />
+  //       ))}
+  //     </section>
+  //   );
+  // }
+
   const cardsInShoppingCart = cardList.map(obj => {
     return (
       <CardInShoppingcart
         key={obj.id}
         index={obj.id}
         text={obj.name}
+        image={obj.image}
         onClickHandler={onClickHandler}
         onClickHandlerSearch={onClickHandlerSearch}
       />
@@ -118,6 +165,7 @@ function Searchbar() {
         placeholder="Search..."
         onChange={onClickHandlerSearch}
       />
+      <Grid />
       <Grid>{cardsInShoppingCart}</Grid>
       <Cards clickHandler={addFruit} />
     </div>
