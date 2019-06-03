@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Cards from "./Cards";
 import Searchbar from "./Searchbar";
 import styled from "styled-components";
-// import CardInShoppingcart from "./CardInShoppingcart";
 import { shoppingItems as items, categories as cats } from "../data-model";
 import ShoppingItem from "./ShoppingItem";
 
@@ -23,11 +22,13 @@ function Shoppingcarts() {
   function handleItemSelect(item) {
     // TODO: only add items that are not in the list
     // Hint use inlcudes or contains or find
-    setCartItems([...cartItems, item]);
+    setCartItems([
+      ...cartItems.filter(cartItem => item.id !== cartItem.id),
+      item
+    ]);
   }
 
   function handleItemRemove(item) {
-    // TODO: remove from cartItems
     setCartItems(cartItems.filter(cartItem => item.id !== cartItem.id));
   }
 
