@@ -20,8 +20,6 @@ function Shoppingcarts() {
   const [cartItems, setCartItems] = useState([]);
 
   function handleItemSelect(item) {
-    // TODO: only add items that are not in the list
-    // Hint use inlcudes or contains or find
     setCartItems([
       ...cartItems.filter(cartItem => item.id !== cartItem.id),
       item
