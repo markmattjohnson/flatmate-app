@@ -126,7 +126,7 @@ function Searchbar() {
     setFilteredCards(newCards);
   };
 
-  const cardList = searchValue === "" ? [] : filteredCards;
+  const cardList = searchValue === "" ? [] : filteredCards; //[]=cards to get addfruit and delete back
 
   // function CardList({ cards }) {
   //   return (
