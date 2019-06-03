@@ -2,37 +2,11 @@ import React, { useState } from "react";
 import Cards from "./Cards";
 import Searchbar from "./Searchbar";
 import styled from "styled-components";
-import CardInShoppingcart from "./CardInShoppingcart";
-import uid from "uid";
+// import CardInShoppingcart from "./CardInShoppingcart";
+import { shoppingItems as items, categories as cats } from "../data-model";
+import ShoppingItem from "./ShoppingItem";
 
-function Shoppingcarts() {
-  const [cards, setCards] = useState([
-    {
-      name: "Bananen",
-      id: uid()
-    },
-    {
-      name: "Äpfel",
-      id: uid()
-    },
-    {
-      name: "Birnen",
-      id: uid()
-    }
-  ]);
-
-  // const addFruit = event => {
-  //   setCards([...cards, { name: event.target.innerText, id: uid() }]);
-  // };
-
-  // const onClickHandler = event => {
-  //   const dataId = event.target.getAttribute("data-id");
-  //   const cardsNew = cards.filter(card => card.id !== dataId);
-
-  //   setCards(cardsNew);
-  // };
-
-  const Grid = styled.section`
+const Grid = styled.section`
     /* display: grid;
     grid-gap: 10px;
     margin: 0px 100px 30px 160px;
@@ -40,20 +14,44 @@ function Shoppingcarts() {
     grid-auto-rows: 50px auto auto; */
   `;
 
-  // const cardsInShoppingCart = cards.map(obj => {
-  //   return (
-  //     <CardInShoppingcart
-  //       key={obj.id}
-  //       index={obj.id}
-  //       text={obj.name}
-  //       onClickHandler={onClickHandler}
-  //     />
-  //   );
-  // });
+// maybe rename to shopping
+function Shoppingcarts() {
+  const [shoppingItems] = useState(items);
+  const [categories] = useState(cats);
+  const [cartItems, setCartItems] = useState([]);
+
+  function handleItemSelect(item) {
+    // TODO: only add items that are not in the list
+    // Hint use inlcudes or contains or find
+    setCartItems([...cartItems, item]);
+  }
+
+  function handleItemRemove(item) {
+    // TODO: remove from cartItems
+    setCartItems(cartItems.filter(cartItem => item.id !== cartItem.id));
+  }
 
   return (
     <Grid>
-      <Searchbar />
+      <Searchbar
+        shoppingItems={shoppingItems}
+        onItemSelect={handleItemSelect}
+      />
+      <div>
+        {cartItems.map(item => (
+          <ShoppingItem
+            key={item.id}
+            text={item.name}
+            image={item.image}
+            onClick={() => handleItemRemove(item)}
+          />
+        ))}
+      </div>
+      <Cards
+        categories={categories}
+        shoppingItems={shoppingItems}
+        onItemSelect={handleItemSelect}
+      />
     </Grid>
   );
 }

@@ -1,12 +1,11 @@
-import "../card.css";
 import styled from "styled-components";
 import React, { useState } from "react";
-import uid from "uid";
-import CardInShoppingcart from "./CardInShoppingcart";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
+import ShoppingItem from "./ShoppingItem";
+
 library.add(fab, faStroopwafel);
 
 const StyledCard = styled.div`
@@ -31,79 +30,16 @@ const H4 = styled.h4`
   margin: 0;
 `;
 
-const Card = props => {
+const Grid = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  min-height: 150px;
+  margin-bottom: 10px;
+`;
+
+const Card = ({ category, shoppingItems, onItemSelect }) => {
   const [expanded, setExpanded] = useState(false);
-  const [cards, setCards] = useState([
-    {
-      name: "Ananas",
-      id: uid(),
-      image: "./images/pineapple.jpg"
-    },
-    {
-      name: "Apfel",
-      id: uid(),
-      image: "./images/apple.jpg"
-    },
-    {
-      name: "Aprikose",
-      id: uid(),
-      image: "./images/apricot.jpg"
-    },
-    {
-      name: "Blaubeere",
-      id: uid(),
-      image: "./images/blueberries.jpg"
-    },
-    {
-      name: "Avokado",
-      id: uid(),
-      image: "./images/avocado.jpg"
-    },
-    {
-      name: "Banane",
-      id: uid(),
-      image: "./images/banana.jpg"
-    },
-    {
-      name: "Birne",
-      id: uid(),
-      image: "./images/pear.jpg"
-    },
-    {
-      name: "Rhabarber",
-      id: uid(),
-      image: "./images/rhuburb.jpg"
-    },
-    {
-      name: "Gurke",
-      id: uid(),
-      image: "./images/cucumber.jpg"
-    },
-    {
-      name: "Erdbeere",
-      id: uid(),
-      image: "./images/strawberries.jpg"
-    },
-    {
-      name: "Watermelon",
-      id: uid(),
-      image: "./images/watermelon.jpg"
-    }
-  ]);
-
-  const close = () => {
-    setExpanded(!expanded);
-  };
-
-  const status = expanded ? "expanded" : "closed";
-
-  const Grid = styled.section`
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-    min-height: 150px;
-    margin-bottom: 10px;
-  `;
 
   // const Box = styled.div`
   //   background: hotpink;
@@ -115,58 +51,29 @@ const Card = props => {
   //   }
   // `;
 
-  const Image = styled.img`
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-  `;
-
-  const onClickHandler = event => {
-    console.log(event.target, "Click");
-    const dataId = event.target.getAttribute("data-id");
-    const cardsNew = cards.filter(card => card.id !== dataId);
-
-    setCards(cardsNew);
-  };
-
-  // const cardsInShoppingCart = cards.map(obj => {
-  //   return (
-  //     <CardInShoppingcart
-  //       key={obj.id}
-  //       index={obj.id}
-  //       text={obj.name}
-  //       image={obj.image}
-  //       onClickHandler={onClickHandler}
-  //     />
-  //   );
-  // });
-
-  const products = cards.map((product, index) => (
-    <div
-      className="box"
-      key={index}
-      data-id={props.index}
-      image={props.image}
-      onClick={props.clickHandler}
-    >
-      <Image src={props.image} data-id={props.index} alt="" />
-    </div>
+  const products = shoppingItems.map(item => (
+    <ShoppingItem
+      key={item.id}
+      text={item.name}
+      image={item.image}
+      onClick={() => onItemSelect(item)}
+    />
   ));
 
   return (
     <StyledCard className={`card ${expanded ? "expanded" : ""}`}>
-      <Cardheader onClick={close}>
+      <Cardheader onClick={() => setExpanded(!expanded)}>
         <H4>
-          {props.title}
+          {category.name}
           <hr />
           <FontAwesomeIcon icon="stroopwafel" />
         </H4>
       </Cardheader>
-      <div className={status}>
+      {expanded && (
         <Cardbody>
           <Grid>{products}</Grid>
         </Cardbody>
-      </div>
+      )}
     </StyledCard>
   );
 };
