@@ -25,7 +25,6 @@ const Grid = styled.div`
 `;
 
 const Main = styled.main``;
-
 function App() {
   return (
     <Grid>

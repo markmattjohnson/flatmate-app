@@ -3,121 +3,117 @@ import uid from "uid";
 export const shoppingItems = [
   {
     id: uid(),
+    name: "Ananas",
+    image: "images/pineapple.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Apfel",
+    image: "images/apple.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Aprikose",
+    image: "images/apricot.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Avokado",
+    image: "images/avocado.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
     name: "Banane",
     image: "images/banana.jpg",
-    category: "fruit"
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Birne",
+    image: "images/pear.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Blaubeere",
+    image: "images/blueberries.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Erdbeere",
+    image: "images/strawberries.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Gurke",
+    image: "images/cucumber.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Rhabarber",
+    image: "images/rhuburb.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Wassermelone",
+    image: "images/watermelon.jpg",
+    category: "Obst & Gemüse"
+  },
+  {
+    id: uid(),
+    name: "Apfelfächer",
+    image: "images/apfelfächer.jpg",
+    category: "Brot & Backwaren"
   },
   {
     id: uid(),
     name: "Brot",
     image: "images/bread.jpg",
-    category: "bread"
-  },
-  {
-    id: uid(),
-    name: "Strawberry",
-    image: "images/strawberries.jpg",
-    category: "fruit"
+    category: "Brot & Backwaren"
   },
   {
     id: uid(),
     name: "Milch",
     image: "images/rocher.jpg",
-    category: "dairy"
+    category: "Milch & Käse"
+  },
+  {
+    id: uid(),
+    name: "Nutella",
+    image: "images/nutella.jpg",
+    category: "Fertigprodukte"
+  },
+  {
+    id: uid(),
+    name: "Kaffeebohnen",
+    image: "images/coffeebeans.jpg",
+    category: "Fertigprodukte"
   }
 ];
 
 export const categories = [
   {
     id: "fruit",
-    name: "Frucht"
+    name: "Obst & Gemüse"
   },
   {
     id: "bread",
-    name: "Brot"
+    name: "Brot & Backwaren"
   },
   {
     id: "dairy",
-    name: "Milch"
+    name: "Milch & Käse"
+  },
+  {
+    id: "finished products",
+    name: "Fertigprodukte"
   }
 ];
-
-/*
-const [cards, setCards] = useState([
-  {
-    name: "Ananas",
-    id: uid(),
-    image: "./images/pineapple.jpg"
-  },
-  {
-    name: "Apfel",
-    id: uid(),
-    image: "./images/apple.jpg"
-  },
-  {
-    name: "Brot",
-    id: uid(),
-    image: "./images/bread.jpg"
-  },
-  {
-    name: "Aprikose",
-    id: uid(),
-    image: "./images/apricot.jpg"
-  },
-  {
-    name: "Blaubeere",
-    id: uid(),
-    image: "./images/blueberries.jpg"
-  },
-  {
-    name: "Avokado",
-    id: uid(),
-    image: "./images/avocado.jpg"
-  },
-  {
-    name: "Banane",
-    id: uid(),
-    image: "./images/banana.jpg"
-  },
-  {
-    name: "Birne",
-    id: uid(),
-    image: "./images/pear.jpg"
-  },
-  {
-    name: "Rhabarber",
-    id: uid(),
-    image: "./images/rhuburb.jpg"
-  },
-  {
-    name: "Gurke",
-    id: uid(),
-    image: "./images/cucumber.jpg"
-  },
-  {
-    name: "Erdbeere",
-    id: uid(),
-    image: "./images/strawberries.jpg"
-  },
-  {
-    name: "watermelon",
-    id: uid(),
-    image: "./images/watermelon.jpg"
-  },
-  {
-    name: "Nutella",
-    id: uid(),
-    image: "./images/nutella.jpg"
-  },
-  {
-    name: "Kaffeebohnen",
-    id: uid(),
-    image: "./images/coffeebeans.jpg"
-  },
-  {
-    name: "Apfelfächer",
-    id: uid(),
-    image: "./images/apfelfächer.jpg"
-  }
-]);
-*/

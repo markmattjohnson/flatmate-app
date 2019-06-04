@@ -25,23 +25,12 @@ function Shoppingcarts() {
     }
 
     setCartItems([...cartItems, item]);
-
-    // if (cartItems.indexOf(cartItem => item.id === cartItem.id) > -1)
-
-    //setCartItems([
-    //...cartItems.filter(cartItem => item.id !== cartItem.id),
-    //item
-
-    //...cartItems, new Set(item)
-
-    //...cartItems.find()
-
-    // ]);
   }
 
   function handleItemRemove(item) {
     setCartItems(cartItems.filter(cartItem => item.id !== cartItem.id));
   }
+  console.log(shoppingItems);
 
   return (
     <Grid>

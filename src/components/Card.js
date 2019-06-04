@@ -59,13 +59,12 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
       onClick={() => onItemSelect(item)}
     />
   ));
-
+  console.log(shoppingItems);
   return (
     <StyledCard className={`card ${expanded ? "expanded" : ""}`}>
       <Cardheader onClick={() => setExpanded(!expanded)}>
         <H4>
           {category.name}
-          <hr />
           <FontAwesomeIcon icon="stroopwafel" />
         </H4>
       </Cardheader>

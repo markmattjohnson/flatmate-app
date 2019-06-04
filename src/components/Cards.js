@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const Cards = ({ shoppingItems, categories, onItemSelect }) => {
   function getShoppingItemsByCategory(category) {
-    return shoppingItems.filter(item => item.category === category.id);
+    return shoppingItems.filter(item => item.category === category.name);
   }
 
   return (
