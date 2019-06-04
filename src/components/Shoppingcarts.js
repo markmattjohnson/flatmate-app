@@ -20,10 +20,23 @@ function Shoppingcarts() {
   const [cartItems, setCartItems] = useState([]);
 
   function handleItemSelect(item) {
-    setCartItems([
-      ...cartItems.filter(cartItem => item.id !== cartItem.id),
-      item
-    ]);
+    if (cartItems.findIndex(cartItem => cartItem.id === item.id) !== -1) {
+      return;
+    }
+
+    setCartItems([...cartItems, item]);
+
+    // if (cartItems.indexOf(cartItem => item.id === cartItem.id) > -1)
+
+    //setCartItems([
+    //...cartItems.filter(cartItem => item.id !== cartItem.id),
+    //item
+
+    //...cartItems, new Set(item)
+
+    //...cartItems.find()
+
+    // ]);
   }
 
   function handleItemRemove(item) {
