@@ -9,11 +9,6 @@ const HeaderImage = styled.img`
   width: 100%;
 `;
 
-// const Navigation = styled.nav`
-//   display: flex;
-//   justify-content: center;
-// `;
-
 function Header() {
   return (
     <HeaderContainer>

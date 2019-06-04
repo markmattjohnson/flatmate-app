@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Shoppingcarts from "./components/Shoppingcarts";
+import React from "react";
+import Shopping from "./components/Shopping";
 import Todos from "./Todos";
 import Header from "./components/Header";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -25,7 +25,6 @@ const Grid = styled.div`
 `;
 
 const Main = styled.main``;
-
 function App() {
   return (
     <Grid>
@@ -34,7 +33,7 @@ function App() {
         <Header />
         <Main>
           <Switch>
-            <Route exact path="/" component={Shoppingcarts} />
+            <Route exact path="/" component={Shopping} />
             <Route path="/todos" component={Todos} />
           </Switch>
         </Main>
