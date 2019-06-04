@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import NavLink from "./NavigationLink";
 
 const StyledHeader = styled.header`
   background: turquoise;
@@ -14,7 +15,12 @@ const Navigation = styled.nav`
 function Navigationbar() {
   return (
     <StyledHeader>
-      <Navigation />
+      <Navigation>
+        <NavLink exact to="/">
+          Shopping
+        </NavLink>
+        <NavLink to="/todos">Todos</NavLink>
+      </Navigation>
     </StyledHeader>
   );
 }
