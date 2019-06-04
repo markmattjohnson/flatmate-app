@@ -13,8 +13,7 @@ const Grid = styled.section`
     grid-auto-rows: 50px auto auto; */
   `;
 
-// maybe rename to shopping
-function Shoppingcarts() {
+function Shopping() {
   const [shoppingItems] = useState(items);
   const [categories] = useState(cats);
   const [cartItems, setCartItems] = useState([]);
@@ -30,7 +29,6 @@ function Shoppingcarts() {
   function handleItemRemove(item) {
     setCartItems(cartItems.filter(cartItem => item.id !== cartItem.id));
   }
-  console.log(shoppingItems);
 
   return (
     <Grid>
@@ -56,4 +54,4 @@ function Shoppingcarts() {
     </Grid>
   );
 }
-export default Shoppingcarts;
+export default Shopping;

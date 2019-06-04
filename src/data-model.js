@@ -81,9 +81,9 @@ export const shoppingItems = [
   },
   {
     id: uid(),
-    name: "Milch",
+    name: "Rocher",
     image: "images/rocher.jpg",
-    category: "Milch & Käse"
+    category: "Süßes"
   },
   {
     id: uid(),
@@ -115,5 +115,9 @@ export const categories = [
   {
     id: "finished products",
     name: "Fertigprodukte"
+  },
+  {
+    id: "sweets",
+    name: "Süßes"
   }
 ];

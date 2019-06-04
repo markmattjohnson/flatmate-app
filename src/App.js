@@ -1,5 +1,5 @@
 import React from "react";
-import Shoppingcarts from "./components/Shoppingcarts";
+import Shopping from "./components/Shoppingcarts";
 import Todos from "./Todos";
 import Header from "./components/Header";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -33,7 +33,7 @@ function App() {
         <Header />
         <Main>
           <Switch>
-            <Route exact path="/" component={Shoppingcarts} />
+            <Route exact path="/" component={Shopping} />
             <Route path="/todos" component={Todos} />
           </Switch>
         </Main>
