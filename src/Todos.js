@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./todo.css";
+import Navigationbar from "./components/Navbar";
 
 function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
@@ -64,18 +65,20 @@ function AppTodo() {
   };
 
   return (
-    <div className="todopage">
-      <div className="todo-list">
-        {todos.map((todo, index) => (
-          <Todo
-            key={index}
-            index={index}
-            todo={todo}
-            finishedTodo={finishedTodo}
-            deleteTodo={deleteTodo}
-          />
-        ))}
-        <TodoForm addTodo={addTodo} />
+    <div>
+      <div className="todopage">
+        <div className="todo-list">
+          {todos.map((todo, index) => (
+            <Todo
+              key={index}
+              index={index}
+              todo={todo}
+              finishedTodo={finishedTodo}
+              deleteTodo={deleteTodo}
+            />
+          ))}
+          <TodoForm addTodo={addTodo} />
+        </div>
       </div>
     </div>
   );
