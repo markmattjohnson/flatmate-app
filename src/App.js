@@ -4,6 +4,7 @@ import Todos from "./Todos";
 import Header from "./components/Header";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
+import Navigationbar from "./components/Navbar";
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/todos" component={Todos} />
           </Switch>
         </Main>
+        <Navigationbar />
       </BrowserRouter>
     </Grid>
   );
