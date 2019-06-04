@@ -9,8 +9,6 @@ function Searchbar({ shoppingItems, onItemSelect }) {
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
-    border: 1px solid black;
-    min-height: 150px;
     margin-bottom: 10px;
   `;
 

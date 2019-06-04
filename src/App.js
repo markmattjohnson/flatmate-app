@@ -1,5 +1,5 @@
 import React from "react";
-import Shopping from "./components/Shoppingcarts";
+import Shopping from "./components/Shopping";
 import Todos from "./Todos";
 import Header from "./components/Header";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
