@@ -4,6 +4,7 @@ import Todos from "./Todos";
 import Header from "./components/Header";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
+import Navigationbar from "./components/Navbar";
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -19,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 80px auto;
+  grid-template-rows: 80px auto 65px;
   text-align: center;
   height: 100vh;
 `;
@@ -37,6 +38,7 @@ function App() {
             <Route path="/todos" component={Todos} />
           </Switch>
         </Main>
+        <Navigationbar />
       </BrowserRouter>
     </Grid>
   );
