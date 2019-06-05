@@ -17,7 +17,7 @@ const StyledCard = styled.div`
 
 const Cardheader = styled.div`
   padding: 5px;
-  background-color: papayawhip;
+  background-color: turquoise;
   height: 30px;
   cursor: pointer;
 `;
