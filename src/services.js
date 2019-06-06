@@ -9,3 +9,7 @@ export function getFromLocal(name) {
     console.log(error);
   }
 }
+
+export function setToLocal(name, data) {
+  localStorage.setItem(name, JSON.stringify(data));
+}

@@ -1,6 +1,6 @@
-import React, { useState, useeffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./todo.css";
-import { getTodos, getFromLocal } from "../src/services";
+import { getTodos, getFromLocal, setToLocal } from "../src/services";
 
 function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
@@ -48,6 +48,14 @@ function AppTodo() {
       { text: "Müll runterbringen", isCompleted: false }
     ]
   );
+
+  useEffect(() => {
+    loadTodos();
+  }, []);
+
+  useEffect(() => {
+    setToLocal("todos", todos);
+  }, [todos]);
 
   function loadTodos() {
     getTodos()
