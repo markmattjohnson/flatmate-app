@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./todo.css";
-import Navigationbar from "./components/Navbar";
 
 function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
