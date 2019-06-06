@@ -49,6 +49,12 @@ function AppTodo() {
     ]
   );
 
+  function loadTodos() {
+    getTodos()
+      .then(data => setTodos(data))
+      .catch(error => console.log(error));
+  }
+
   const addTodo = text => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
