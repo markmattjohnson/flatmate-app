@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useeffect } from "react";
 import "./todo.css";
+import { getFromLocal } from "../src/services";
 
 function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
@@ -40,11 +41,13 @@ function TodoForm({ addTodo }) {
 }
 
 function AppTodo() {
-  const [todos, setTodos] = useState([
-    { text: "Spülmaschine ausräumen", isCompleted: false },
-    { text: "Toilette putzen", isCompleted: false },
-    { text: "Müll runterbringen", isCompleted: false }
-  ]);
+  const [todos, setTodos] = useState(
+    getFromLocal("todos") || [
+      { text: "Spülmaschine ausräumen", isCompleted: false },
+      { text: "Toilette putzen", isCompleted: false },
+      { text: "Müll runterbringen", isCompleted: false }
+    ]
+  );
 
   const addTodo = text => {
     const newTodos = [...todos, { text }];
