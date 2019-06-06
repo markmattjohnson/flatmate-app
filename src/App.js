@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import Navigationbar from "./components/Navbar";
+import { setLocal, getLocal } from "./services";
 
 const GlobalStyles = createGlobalStyle`
   * {
