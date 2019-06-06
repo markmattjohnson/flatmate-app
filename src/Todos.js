@@ -41,13 +41,7 @@ function TodoForm({ addTodo }) {
 }
 
 function AppTodo() {
-  const [todos, setTodos] = useState(
-    getFromLocal("todos") || [
-      { text: "Spülmaschine ausräumen", isCompleted: false },
-      { text: "Toilette putzen", isCompleted: false },
-      { text: "Müll runterbringen", isCompleted: false }
-    ]
-  );
+  const [todos, setTodos] = useState(getFromLocal("todos") || []);
 
   useEffect(() => {
     loadTodos();
