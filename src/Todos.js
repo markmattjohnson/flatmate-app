@@ -1,6 +1,6 @@
 import React, { useState, useeffect } from "react";
 import "./todo.css";
-import { getFromLocal } from "../src/services";
+import { getTodos, getFromLocal } from "../src/services";
 
 function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
