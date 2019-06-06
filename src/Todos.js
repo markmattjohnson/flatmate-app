@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./todo.css";
-import Navigationbar from "./components/Navbar";
+import { getTodos, getFromLocal, setToLocal } from "../src/services";
 
 function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
@@ -41,11 +41,21 @@ function TodoForm({ addTodo }) {
 }
 
 function AppTodo() {
-  const [todos, setTodos] = useState([
-    { text: "Spülmaschine ausräumen", isCompleted: false },
-    { text: "Toilette putzen", isCompleted: false },
-    { text: "Müll runterbringen", isCompleted: false }
-  ]);
+  const [todos, setTodos] = useState(getFromLocal("todos") || []);
+
+  useEffect(() => {
+    loadTodos();
+  }, []);
+
+  useEffect(() => {
+    setToLocal("todos", todos);
+  }, [todos]);
+
+  function loadTodos() {
+    getTodos()
+      .then(data => setTodos(data))
+      .catch(error => console.log(error));
+  }
 
   const addTodo = text => {
     const newTodos = [...todos, { text }];

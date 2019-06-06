@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
 import Searchbar from "./Searchbar";
 import styled from "styled-components";
 import { shoppingItems as items, categories as cats } from "../data-model";
 import ShoppingItem from "./ShoppingItem";
+import { getCartItems, getFromLocal, setToLocal } from "../services";
 
 const Grid = styled.section`
     /* display: grid;
@@ -16,7 +17,21 @@ const Grid = styled.section`
 function Shopping() {
   const [shoppingItems] = useState(items);
   const [categories] = useState(cats);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(getFromLocal("cartItems") || []);
+
+  useEffect(() => {
+    loadCartItems();
+  }, []);
+
+  useEffect(() => {
+    setToLocal("cartItems", cartItems);
+  }, [cartItems]);
+
+  function loadCartItems() {
+    getCartItems()
+      .then(data => setCartItems(data))
+      .catch(error => console.log(error));
+  }
 
   function handleItemSelect(item) {
     if (cartItems.findIndex(cartItem => cartItem.id === item.id) !== -1) {
