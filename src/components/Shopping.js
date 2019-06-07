@@ -6,13 +6,7 @@ import { shoppingItems as items, categories as cats } from "../data-model";
 import ShoppingItem from "./ShoppingItem";
 import { getCartItems, getFromLocal, setToLocal } from "../services";
 
-const Grid = styled.section`
-    /* display: grid;
-    grid-gap: 10px;
-    margin: 0px 100px 30px 160px;
-    grid-template-columns: repeat(auto-fit, ${props => props.size || "100"}px);
-    grid-auto-rows: 50px auto auto; */
-  `;
+const Grid = styled.section``;
 
 function Shopping() {
   const [shoppingItems] = useState(items);
