@@ -5,7 +5,9 @@ import { getTodos, getFromLocal, setToLocal } from "../src/services";
 function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
     <div
-      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+      style={{
+        textDecoration: todo.isCompleted ? "line-through" : "none"
+      }}
       className="todo"
     >
       {todo.text}
@@ -58,14 +60,16 @@ function AppTodo() {
   }
 
   const addTodo = text => {
-    const newTodos = [...todos, { text }];
+    const newTodos = [...todos, { text, isCompleted: false }];
     setTodos(newTodos);
   };
 
   const finishedTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    setTodos(newTodos);
+    setTodos([
+      ...todos.slice(0, index),
+      { ...todos[index], isCompleted: !todos[index].isCompleted },
+      ...todos.slice(index + 1)
+    ]);
   };
 
   const deleteTodo = index => {
@@ -80,7 +84,7 @@ function AppTodo() {
         <div className="todo-list">
           {todos.map((todo, index) => (
             <Todo
-              key={index}
+              key={todo.text + index}
               index={index}
               todo={todo}
               finishedTodo={finishedTodo}

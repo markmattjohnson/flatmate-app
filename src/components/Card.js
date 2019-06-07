@@ -41,16 +41,6 @@ const Grid = styled.section`
 const Card = ({ category, shoppingItems, onItemSelect }) => {
   const [expanded, setExpanded] = useState(false);
 
-  // const Box = styled.div`
-  //   background: hotpink;
-  //   border-radius: ${props => props.radius || 0}px;
-  //   cursor: pointer;
-
-  //   &:hover {
-  //     background: mediumseagreen;
-  //   }
-  // `;
-
   const products = shoppingItems.map(item => (
     <ShoppingItem
       key={item.id}
