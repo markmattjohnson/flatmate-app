@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./todo.css";
 import { getTodos, getFromLocal, setToLocal } from "../src/services";
-import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 
 function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
