@@ -66,29 +66,12 @@ function AppTodo() {
   };
 
   const finishedTodo = index => {
-    // alert(todos[index].isCompleted);
     setTodos([
       ...todos.slice(0, index),
       { ...todos[index], isCompleted: !todos[index].isCompleted },
       ...todos.slice(index + 1)
     ]);
-    // const newTodos = [...todos];
-    // if ((newTodos[index].isCompleted = true)) {
-    //   setTodos(newTodos);
-    // } else if ((newTodos[index].isCompleted = false)) {
-    //   setTodos(newTodos);
-    // }
   };
-
-  // export default function Toggle(props) {
-  //   const [toggleState, setToggleState] = useState("off");
-
-  //   function toggle() {
-  //     setToggleState(toggleState === "off" ? "on" : "off");
-  //   }
-
-  //   return <div className={`${toggleState}`} onClick={toggle} />;
-  // }
 
   const deleteTodo = index => {
     const newTodos = [...todos];
