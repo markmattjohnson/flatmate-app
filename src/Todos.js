@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./todo.css";
 import { getTodos, getFromLocal, setToLocal } from "../src/services";
+import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 
 function Todo({ todo, index, finishedTodo, deleteTodo }) {
   return (
     <div
-      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+      style={{
+        textDecoration: todo.isCompleted ? "line-through" : "none"
+      }}
       className="todo"
     >
       {todo.text}
@@ -58,15 +61,34 @@ function AppTodo() {
   }
 
   const addTodo = text => {
-    const newTodos = [...todos, { text }];
+    const newTodos = [...todos, { text, isCompleted: false }];
     setTodos(newTodos);
   };
 
   const finishedTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    setTodos(newTodos);
+    // alert(todos[index].isCompleted);
+    setTodos([
+      ...todos.slice(0, index),
+      { ...todos[index], isCompleted: !todos[index].isCompleted },
+      ...todos.slice(index + 1)
+    ]);
+    // const newTodos = [...todos];
+    // if ((newTodos[index].isCompleted = true)) {
+    //   setTodos(newTodos);
+    // } else if ((newTodos[index].isCompleted = false)) {
+    //   setTodos(newTodos);
+    // }
   };
+
+  // export default function Toggle(props) {
+  //   const [toggleState, setToggleState] = useState("off");
+
+  //   function toggle() {
+  //     setToggleState(toggleState === "off" ? "on" : "off");
+  //   }
+
+  //   return <div className={`${toggleState}`} onClick={toggle} />;
+  // }
 
   const deleteTodo = index => {
     const newTodos = [...todos];
@@ -80,7 +102,7 @@ function AppTodo() {
         <div className="todo-list">
           {todos.map((todo, index) => (
             <Todo
-              key={index}
+              key={todo.text + index}
               index={index}
               todo={todo}
               finishedTodo={finishedTodo}
