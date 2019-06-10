@@ -7,7 +7,6 @@ const Image = styled.img`
   border-radius: 50%;
 `;
 
-// TODO: use flexbox
 const StyledBox = styled.div`
   display: flex;
   flex-wrap: wrap;

@@ -12,6 +12,11 @@ function Searchbar({ shoppingItems, onItemSelect }) {
     margin-bottom: 10px;
   `;
 
+  // function handleSubmit(event) {
+  //   event.preventDefault()
+  //   const form = event.target
+  // }
+
   const handleSearchChange = event => {
     const value = event.target.value;
     setSearchValue(value);
@@ -25,12 +30,17 @@ function Searchbar({ shoppingItems, onItemSelect }) {
 
   const filteredItems = searchValue ? filterItems() : [];
 
+  function mySearchFunctionClear() {
+    document.getElementById("searchForm").reset();
+  }
+
   return (
-    <div className="app">
+    <form className="app" id="searchForm">
       <input
         type="text"
         placeholder="Search..."
         onChange={handleSearchChange}
+        onClick="mySearchFunctionClear()"
       />
       <Grid>
         {filteredItems.map(item => (
@@ -38,11 +48,13 @@ function Searchbar({ shoppingItems, onItemSelect }) {
             key={item.id}
             text={item.name}
             image={item.image}
-            onClick={() => onItemSelect(item)}
+            onClick={() =>
+              onItemSelect(item, setSearchValue(), mySearchFunctionClear())
+            }
           />
         ))}
       </Grid>
-    </div>
+    </form>
   );
 }
 
