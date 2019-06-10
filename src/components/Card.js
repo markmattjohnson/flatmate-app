@@ -16,9 +16,8 @@ const StyledCard = styled.div`
 `;
 
 const Cardheader = styled.div`
-  padding: 5px;
+  padding: 7px;
   background-color: rgb(64, 165, 219);
-  height: 30px;
   cursor: pointer;
   border-radius: 5px;
   margin: 0 10px 0 10px;
@@ -33,6 +32,7 @@ const H4 = styled.h4`
   justify-content: space-between;
   margin: 0 10px 0 10px;
   color: whitesmoke;
+  font-size: 18px;
   font-family: roboto;
 `;
 
