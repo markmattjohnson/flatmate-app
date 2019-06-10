@@ -14,6 +14,12 @@ const Grid = styled.section`
     grid-auto-rows: 50px auto auto; */
   `;
 
+const GridShoppingItems = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 function Shopping() {
   const [shoppingItems] = useState(items);
   const [categories] = useState(cats);
@@ -51,7 +57,7 @@ function Shopping() {
         shoppingItems={shoppingItems}
         onItemSelect={handleItemSelect}
       />
-      <div>
+      <GridShoppingItems>
         {cartItems.map(item => (
           <ShoppingItem
             key={item.id}
@@ -60,7 +66,7 @@ function Shopping() {
             onClick={() => handleItemRemove(item)}
           />
         ))}
-      </div>
+      </GridShoppingItems>
       <Cards
         categories={categories}
         shoppingItems={shoppingItems}

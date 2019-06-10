@@ -9,6 +9,8 @@ const Image = styled.img`
 
 // TODO: use flexbox
 const StyledBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   width: 100px;
   height: 100px;
   border-radius: 50%;
