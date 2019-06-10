@@ -3,23 +3,25 @@ import React, { useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import ShoppingItem from "./ShoppingItem";
 
-library.add(fab, faStroopwafel);
+library.add(fab, faAngleDown, faAngleUp);
 
 const StyledCard = styled.div`
   width: 100%;
-  border: 1px solid black;
   margin: auto;
   margin-bottom: 20px;
 `;
 
 const Cardheader = styled.div`
   padding: 5px;
-  background-color: turquoise;
+  background-color: rgb(64, 165, 219);
   height: 30px;
   cursor: pointer;
+  border-radius: 5px;
+  margin: 0 10px 0 10px;
 `;
 
 const Cardbody = styled.div`
@@ -27,7 +29,11 @@ const Cardbody = styled.div`
 `;
 
 const H4 = styled.h4`
-  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px 0 10px;
+  color: whitesmoke;
+  font-family: roboto;
 `;
 
 const Grid = styled.section`
@@ -50,12 +56,28 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
     />
   ));
 
+  function toggleIcon() {
+    if (expanded === true) {
+      return (
+        <p1>
+          <FontAwesomeIcon icon="angle-down" />
+        </p1>
+      );
+    } else {
+      return (
+        <p1>
+          <FontAwesomeIcon icon="angle-up" />
+        </p1>
+      );
+    }
+  }
+
   return (
-    <StyledCard className={`card ${expanded ? "expanded" : ""}`}>
+    <StyledCard>
       <Cardheader onClick={() => setExpanded(!expanded)}>
         <H4>
           {category.name}
-          <FontAwesomeIcon icon="stroopwafel" />
+          {toggleIcon()}
         </H4>
       </Cardheader>
       {expanded && (

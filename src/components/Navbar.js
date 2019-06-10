@@ -3,13 +3,14 @@ import styled from "styled-components";
 import NavLink from "./NavigationLink";
 
 const StyledHeader = styled.header`
-  background: turquoise;
+  background-color: white;
   padding: 20px;
 `;
 
 const Navigation = styled.nav`
   display: flex;
   justify-content: center;
+  font-family: roboto;
 `;
 
 function Navigationbar() {
@@ -17,9 +18,11 @@ function Navigationbar() {
     <StyledHeader>
       <Navigation>
         <NavLink exact to="/">
-          Shopping
+          <h3>Shopping</h3>
         </NavLink>
-        <NavLink to="/todos">Todos</NavLink>
+        <NavLink to="/todos">
+          <h3>Todos</h3>
+        </NavLink>
       </Navigation>
     </StyledHeader>
   );

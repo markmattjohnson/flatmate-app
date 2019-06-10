@@ -12,11 +12,6 @@ function Searchbar({ shoppingItems, onItemSelect }) {
     margin-bottom: 10px;
   `;
 
-  // function handleSubmit(event) {
-  //   event.preventDefault()
-  //   const form = event.target
-  // }
-
   const handleSearchChange = event => {
     const value = event.target.value;
     setSearchValue(value);

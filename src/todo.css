@@ -1,11 +1,11 @@
 .todopage {
-  background: mediumseagreen;
+  background: white;
   padding: 30px;
   height: 100vh;
 }
 
 .todo-list {
-  background: whitesmoke;
+  background: rgb(64, 165, 219);
   border-radius: 4px;
   padding: 5px;
   max-width: 400px;
@@ -14,7 +14,7 @@
 .todo {
   background: white;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  padding: 3px 10px;
+  padding: 10px 10px;
   font-size: 12px;
   margin-bottom: 6px;
   border-radius: 3px;
