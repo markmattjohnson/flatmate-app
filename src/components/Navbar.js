@@ -2,29 +2,41 @@ import React from "react";
 import styled from "styled-components";
 import NavLink from "./NavigationLink";
 
-const StyledHeader = styled.header`
-  background-color: white;
-`;
-
-const Navigation = styled.nav`
+const Navigation = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-evenly;
   font-family: roboto;
+  position: relative;
+  bottom: 10px;
+  width: 100%;
+  margin-top: 10px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 100%
+  );
 `;
+
+// const BlurredBackground = styled.div`
+//   position: absolute;
+//   background: white;
+//   opacity: 0.5;
+//   bottom: -5px;
+//   z-index: 10;
+//   height: 60px;
+//   width: 100%;
+// `;
 
 function Navigationbar() {
   return (
-    <StyledHeader>
-      <Navigation>
-        <NavLink exact to="/">
-          <h3>Shopping</h3>
-        </NavLink>
-        <NavLink to="/todos">
-          <h3>Todos</h3>
-        </NavLink>
-      </Navigation>
-    </StyledHeader>
+    <Navigation>
+      <NavLink exact to="/">
+        <h3>Shopping</h3>
+      </NavLink>
+      <NavLink to="/todos">
+        <h3>Todos</h3>
+      </NavLink>
+    </Navigation>
   );
 }
 

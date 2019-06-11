@@ -23,12 +23,14 @@ const GlobalStyles = createGlobalStyle`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 80px auto 65px;
+  grid-template-rows: 80px auto;
   text-align: center;
   height: 100vh;
 `;
 
-const Main = styled.main``;
+const Main = styled.main`
+  overflow-y: scroll;
+`;
 function App() {
   return (
     <Grid>
