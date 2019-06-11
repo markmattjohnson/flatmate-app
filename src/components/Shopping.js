@@ -13,6 +13,14 @@ const GridShoppingItems = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 20px;
+  text-align: start;
+`;
+
+const Shoppingcart = styled.p`
+  color: rgb(64, 165, 219);
+  text-align: start;
+  margin-left: 10px;
+  font-family: roboto;
 `;
 
 function Shopping() {
@@ -52,6 +60,7 @@ function Shopping() {
         shoppingItems={shoppingItems}
         onItemSelect={handleItemSelect}
       />
+      <Shoppingcart>Einkaufswagen</Shoppingcart>
       <GridShoppingItems>
         {cartItems.map(item => (
           <ShoppingItem

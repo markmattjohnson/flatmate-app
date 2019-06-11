@@ -17,16 +17,6 @@ const Navigation = styled.div`
   );
 `;
 
-// const BlurredBackground = styled.div`
-//   position: absolute;
-//   background: white;
-//   opacity: 0.5;
-//   bottom: -5px;
-//   z-index: 10;
-//   height: 60px;
-//   width: 100%;
-// `;
-
 function Navigationbar() {
   return (
     <Navigation>

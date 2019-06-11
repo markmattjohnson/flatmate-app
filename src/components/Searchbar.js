@@ -11,10 +11,15 @@ function Searchbar({ shoppingItems, onItemSelect }) {
     padding: 10px;
     margin-bottom: 10px;
   `;
+
   const SearchInput = styled.input`
     padding: 5px;
     border: 1px solid rgb(64, 165, 219);
     font-size: 18px;
+
+    :focus {
+      outline: 1px solid rgb(64, 165, 219);
+    }
   `;
 
   const handleSearchChange = event => {
