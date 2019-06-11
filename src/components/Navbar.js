@@ -4,12 +4,12 @@ import NavLink from "./NavigationLink";
 
 const StyledHeader = styled.header`
   background-color: white;
-  padding: 20px;
 `;
 
 const Navigation = styled.nav`
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   font-family: roboto;
 `;
 

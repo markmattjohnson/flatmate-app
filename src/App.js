@@ -7,6 +7,9 @@ import styled, { createGlobalStyle } from "styled-components";
 import Navigationbar from "./components/Navbar";
 
 const GlobalStyles = createGlobalStyle`
+
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
   * {
     box-sizing: border-box;
   }
@@ -14,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: roboto, sans-serif;
   }
 `;
 
