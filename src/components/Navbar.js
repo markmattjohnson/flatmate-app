@@ -6,8 +6,8 @@ const Navigation = styled.div`
   display: flex;
   justify-content: space-evenly;
   font-family: roboto;
-  position: relative;
-  bottom: 10px;
+  position: absolute;
+  bottom: 0;
   width: 100%;
   margin-top: 10px;
   background-image: linear-gradient(
