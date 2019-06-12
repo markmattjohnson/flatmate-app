@@ -22,7 +22,11 @@ const StyledBox = styled.div`
 
 export default function ShoppingItem({ item, image, onClick }) {
   return (
-    <StyledBox onClick={onClick}>
+    <StyledBox
+      onClick={() => {
+        onClick(item);
+      }}
+    >
       <StyledImage src={image} alt="" />
     </StyledBox>
   );

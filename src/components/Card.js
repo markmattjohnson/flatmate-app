@@ -48,6 +48,24 @@ const Grid = styled.section`
 const Card = ({ category, shoppingItems, onItemSelect }) => {
   const [expanded, setExpanded] = useState(false);
 
+  const StyledCustomBox = styled.div`
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px;
+    background-color: #72beb2;
+    margin: 5px;
+  `;
+
+  const CustomInput = styled.input`
+    position: relative;
+    top: -65px;
+    left: 230px;
+    width: 26%;
+  `;
+
   const products = shoppingItems.map(item => (
     <ShoppingItem
       key={item.id}
@@ -83,7 +101,11 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
       </Cardheader>
       {expanded && (
         <Cardbody>
-          <Grid>{products}</Grid>
+          <Grid>
+            {products}
+            <StyledCustomBox />
+            <CustomInput type="text" placeholder="text" />
+          </Grid>
         </Cardbody>
       )}
     </StyledCard>
