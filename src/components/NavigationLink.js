@@ -13,6 +13,7 @@ const NavLink = styled(RRDNavlink)`
   border-radius: 5px;
   text-decoration: none;
   z-index: 0;
+  background: white;
 
   &.active {
     background: rgb(64, 165, 219);
