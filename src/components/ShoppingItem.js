@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Image = styled.img`
+const StyledImage = styled.img`
   height: 100px;
   width: 100px;
   border-radius: 50%;
@@ -20,10 +20,14 @@ const StyledBox = styled.div`
   margin: 5px;
 `;
 
-export default function ShoppingItem({ image, onClick }) {
+export default function ShoppingItem({ item, image, onClick }) {
   return (
-    <StyledBox onClick={onClick}>
-      <Image src={image} alt="" />
+    <StyledBox
+      onClick={() => {
+        onClick(item);
+      }}
+    >
+      <StyledImage src={image} alt="" />
     </StyledBox>
   );
 }
