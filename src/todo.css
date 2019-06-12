@@ -5,7 +5,8 @@
 }
 
 .todo-list {
-  background: rgb(64, 165, 219);
+  background: #72beb2;
+  /* rgb(64, 165, 219) */
   border-radius: 4px;
   padding: 5px;
   max-width: 400px;
