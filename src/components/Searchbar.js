@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ShoppingItem from "./ShoppingItem";
 
+const Form = styled.form`
+  margin: 0 10px 0 10px;
+`;
+
 const SearchInput = styled.input`
+  width: 100%;
   padding: 5px;
-  border: 1px solid rgb(64, 165, 219);
+  border: 1px solid #72beb2;
+  /* rgb(64, 165, 219) */
+  border-radius: 5px;
   font-size: 18px;
   outline: none;
 `;
@@ -41,7 +48,7 @@ function Searchbar({ shoppingItems, onItemSelect }) {
   }
 
   return (
-    <form className="app" id="searchForm">
+    <Form className="app" id="searchForm">
       <SearchInput
         type="search"
         placeholder="Search..."
@@ -58,7 +65,7 @@ function Searchbar({ shoppingItems, onItemSelect }) {
           />
         ))}
       </Grid>
-    </form>
+    </Form>
   );
 }
 

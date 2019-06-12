@@ -17,7 +17,8 @@ const StyledCard = styled.div`
 
 const Cardheader = styled.div`
   padding: 10px;
-  background-color: rgb(64, 165, 219);
+  background-color: #72beb2;
+  /* rgb(64, 165, 219) */
   cursor: pointer;
   border-radius: 5px;
   margin: 0 10px 0 10px;

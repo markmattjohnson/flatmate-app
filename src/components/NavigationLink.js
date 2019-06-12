@@ -8,14 +8,18 @@ const NavLink = styled(RRDNavlink)`
   height: 50px;
   margin-bottom: 10px;
   justify-content: space-evenly;
-  color: rgb(64, 165, 219);
-  border: 1px solid rgb(64, 165, 219);
+  color: #72beb2;
+  /* rgb(64, 165, 219) */
+  border: 1px solid #72beb2;
+  /* rgb(64, 165, 219) */
   border-radius: 5px;
   text-decoration: none;
   z-index: 0;
+  background: white;
 
   &.active {
-    background: rgb(64, 165, 219);
+    background: #72beb2;
+    /* rgb(64, 165, 219) */
     color: white;
   }
 `;

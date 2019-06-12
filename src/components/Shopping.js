@@ -17,7 +17,8 @@ const GridShoppingItems = styled.div`
 `;
 
 const Shoppingcart = styled.p`
-  color: rgb(64, 165, 219);
+  color: #72beb2;
+  /* rgb(64, 165, 219) */
   text-align: start;
   margin-left: 10px;
   font-family: roboto;
