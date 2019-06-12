@@ -5,6 +5,7 @@ import ShoppingItem from "./ShoppingItem";
 const SearchInput = styled.input`
   padding: 5px;
   border: 1px solid rgb(64, 165, 219);
+  border-radius: 5px;
   font-size: 18px;
   outline: none;
 `;
