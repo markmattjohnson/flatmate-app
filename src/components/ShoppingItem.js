@@ -16,7 +16,7 @@ const StyledBox = styled.div`
   text-align: center;
   vertical-align: middle;
   line-height: 90px;
-  background-color: papayawhip;
+  background-color: #72beb2;
   margin: 5px;
 `;
 

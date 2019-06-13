@@ -5,9 +5,31 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ShoppingItem from "./ShoppingItem";
 
-library.add(fab, faAngleDown, faAngleUp);
+library.add(fab, faAngleDown, faAngleUp, faPlus);
+
+const StyledFaIcon = styled(FontAwesomeIcon)`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-left: 35px;
+  margin-top: 35px;
+  color: white;
+`;
+
+const CustomInput = styled.input`
+  /* display: none; */
+  width: 100%;
+  /* margin-top: 100px; */
+  padding: 5px;
+  border: 1px solid #72beb2;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  outline: none;
+`;
 
 const StyledCard = styled.div`
   width: 100%;
@@ -46,6 +68,7 @@ const Grid = styled.section`
 
 const Card = ({ category, shoppingItems, onItemSelect }) => {
   const [expanded, setExpanded] = useState(false);
+  const [customInputExpanded, setcustomInputExpanded] = useState(false);
 
   const StyledCustomBox = styled.div`
     width: 100px;
@@ -56,13 +79,6 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
     line-height: 90px;
     background-color: #72beb2;
     margin: 5px;
-  `;
-
-  const CustomInput = styled.input`
-    position: relative;
-    top: -65px;
-    left: 230px;
-    width: 26%;
   `;
 
   const products = shoppingItems.map(item => (
@@ -78,15 +94,21 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
     if (expanded === true) {
       return (
         <p1>
-          <FontAwesomeIcon icon="angle-down" />
+          <FontAwesomeIcon icon="angle-up" />
         </p1>
       );
     } else {
       return (
         <p1>
-          <FontAwesomeIcon icon="angle-up" />
+          <FontAwesomeIcon icon="angle-down" />
         </p1>
       );
+    }
+  }
+
+  function toggleCustomInput() {
+    if (customInputExpanded === true) {
+      return <CustomInput type="text" placeholder="text" />;
     }
   }
 
@@ -102,8 +124,16 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
         <Cardbody>
           <Grid>
             {products}
-            <StyledCustomBox />
-            <CustomInput type="text" placeholder="text" />
+            <StyledCustomBox
+              onClick={item => {
+                setcustomInputExpanded(!customInputExpanded);
+                onItemSelect(item);
+              }}
+            >
+              {/* <CustomInput type="text" placeholder="text" /> */}
+              <StyledFaIcon icon="plus" className="fa-2x" />
+              {toggleCustomInput()}
+            </StyledCustomBox>
           </Grid>
         </Cardbody>
       )}
