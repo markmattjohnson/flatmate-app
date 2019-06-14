@@ -20,9 +20,9 @@ const StyledFaIcon = styled(FontAwesomeIcon)`
 `;
 
 const CustomInput = styled.input`
-  /* display: none; */
-  width: 100%;
-  /* margin-top: 100px; */
+  text-align: center;
+  margin-left: 220px;
+  width: 30%;
   padding: 5px;
   border: 1px solid #72beb2;
   border-radius: 5px;
@@ -69,6 +69,7 @@ const Grid = styled.section`
 const Card = ({ category, shoppingItems, onItemSelect }) => {
   const [expanded, setExpanded] = useState(false);
   const [customInputExpanded, setcustomInputExpanded] = useState(false);
+  const [customInputValue, setcustomInputValue] = useState("");
 
   const StyledCustomBox = styled.div`
     width: 100px;
@@ -93,22 +94,35 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
   function toggleIcon() {
     if (expanded === true) {
       return (
-        <p1>
+        <>
           <FontAwesomeIcon icon="angle-up" />
-        </p1>
+        </>
       );
     } else {
       return (
-        <p1>
+        <>
           <FontAwesomeIcon icon="angle-down" />
-        </p1>
+        </>
       );
     }
   }
 
+  function handleCustomInputChange(event) {
+    const value = event.target.value;
+    setcustomInputValue(value);
+    console.log(customInputValue);
+  }
+
   function toggleCustomInput() {
     if (customInputExpanded === true) {
-      return <CustomInput type="text" placeholder="text" />;
+      return (
+        <CustomInput
+          type="text"
+          placeholder="text"
+          onChange={handleCustomInputChange}
+          value={customInputValue}
+        />
+      );
     }
   }
 
@@ -130,10 +144,9 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
                 onItemSelect(item);
               }}
             >
-              {/* <CustomInput type="text" placeholder="text" /> */}
               <StyledFaIcon icon="plus" className="fa-2x" />
-              {toggleCustomInput()}
             </StyledCustomBox>
+            {toggleCustomInput()}
           </Grid>
         </Cardbody>
       )}
