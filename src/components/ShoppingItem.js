@@ -16,14 +16,29 @@ const StyledBox = styled.div`
   text-align: center;
   vertical-align: middle;
   line-height: 90px;
-  background-color: papayawhip;
+  background-color: #72beb2;
   margin: 5px;
 `;
 
-export default function ShoppingItem({ item, image, onClick }) {
+const StyledProduct = styled.p`
+  position: relative;
+  left: 35px;
+  top: -10px;
+`;
+
+export default function ShoppingItem({ name, image, onClick }) {
+  console.log(name);
   return (
-    <StyledBox onClick={onClick}>
-      <StyledImage src={image} alt="" />
+    <StyledBox
+      onClick={() => {
+        onClick();
+      }}
+    >
+      {image ? (
+        <StyledImage src={image} alt="" />
+      ) : (
+        <StyledProduct>{name}</StyledProduct>
+      )}
     </StyledBox>
   );
 }
