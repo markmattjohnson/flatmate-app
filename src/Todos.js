@@ -21,7 +21,6 @@ function Todo({ todo, index, finishedTodo, deleteTodo }) {
 
 function TodoForm({ addTodo }) {
   const [value, setValue] = useState("");
-
   const handleSubmit = event => {
     event.preventDefault();
     if (!value) return;

@@ -43,10 +43,10 @@ function Shopping() {
   }
 
   function handleItemSelect(item) {
+    console.log(item);
     if (cartItems.findIndex(cartItem => cartItem.id === item.id) !== -1) {
       return;
     }
-
     setCartItems([...cartItems, item]);
   }
 
@@ -65,7 +65,7 @@ function Shopping() {
         {cartItems.map(item => (
           <ShoppingItem
             key={item.id}
-            text={item.name}
+            name={item.name}
             image={item.image}
             onClick={() => handleItemRemove(item)}
           />

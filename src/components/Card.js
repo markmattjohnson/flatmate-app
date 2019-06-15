@@ -7,6 +7,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ShoppingItem from "./ShoppingItem";
+import uid from "uid";
 
 library.add(fab, faAngleDown, faAngleUp, faPlus);
 
@@ -81,15 +82,16 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
     background-color: #72beb2;
     margin: 5px;
   `;
-
+  console.log("before", shoppingItems);
   const products = shoppingItems.map(item => (
     <ShoppingItem
       key={item.id}
-      text={item.name}
+      name={item.name}
       image={item.image}
       onClick={() => onItemSelect(item)}
     />
   ));
+  console.log("abc", products);
 
   function toggleIcon() {
     if (expanded === true) {
@@ -116,15 +118,31 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
   function toggleCustomInput() {
     if (customInputExpanded === true) {
       return (
-        <CustomInput
-          type="text"
-          placeholder="text"
-          onChange={handleCustomInputChange}
-          value={customInputValue}
-        />
+        <form onSubmit={handleSubmit}>
+          <CustomInput
+            type="text"
+            placeholder="text"
+            onChange={handleCustomInputChange}
+            value={customInputValue}
+          />
+        </form>
       );
     }
   }
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (!customInputValue) return;
+    const newFruit = {
+      id: uid(),
+      name: customInputValue
+      // image:
+      //   "http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_apple.jpg"
+    };
+    onItemSelect(newFruit);
+    console.log(newFruit);
+    console.log(customInputValue);
+  };
 
   return (
     <StyledCard>
@@ -139,10 +157,7 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
           <Grid>
             {products}
             <StyledCustomBox
-              onClick={item => {
-                setcustomInputExpanded(!customInputExpanded);
-                onItemSelect(item);
-              }}
+              onClick={() => setcustomInputExpanded(!customInputExpanded)}
             >
               <StyledFaIcon icon="plus" className="fa-2x" />
             </StyledCustomBox>

@@ -20,14 +20,25 @@ const StyledBox = styled.div`
   margin: 5px;
 `;
 
-export default function ShoppingItem({ item, image, onClick }) {
+const StyledProduct = styled.p`
+  position: relative;
+  left: 35px;
+  top: -10px;
+`;
+
+export default function ShoppingItem({ name, image, onClick }) {
+  console.log(name);
   return (
     <StyledBox
       onClick={() => {
-        onClick(item);
+        onClick();
       }}
     >
-      <StyledImage src={image} alt="" />
+      {image ? (
+        <StyledImage src={image} alt="" />
+      ) : (
+        <StyledProduct>{name}</StyledProduct>
+      )}
     </StyledBox>
   );
 }
