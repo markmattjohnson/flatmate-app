@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from "react";
+import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +11,9 @@ import ShoppingItem from "./ShoppingItem";
 import uid from "uid";
 
 library.add(fab, faAngleDown, faAngleUp, faPlus);
+
+const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
+const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
 const StyledFaIcon = styled(FontAwesomeIcon)`
   display: flex;
@@ -71,6 +75,7 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
   const [expanded, setExpanded] = useState(false);
   const [customInputExpanded, setcustomInputExpanded] = useState(false);
   const [customInputValue, setcustomInputValue] = useState("");
+  const [image, setImage] = useState("");
 
   const StyledCustomBox = styled.div`
     width: 100px;
@@ -144,28 +149,58 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
     console.log(customInputValue);
   };
 
+  function upload(event) {
+    const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
+
+    const formData = new FormData();
+    formData.append("file", event.target.files[0]);
+    formData.append("upload_preset", PRESET);
+
+    axios
+      .post(url, formData, {
+        headers: {
+          "Content-type": "multipart/form-data"
+        }
+      })
+      .then(onImageSave)
+      .catch(err => console.error(err));
+  }
+
+  function onImageSave(response) {
+    setImage(response.data.url);
+  }
+
   return (
-    <StyledCard>
-      <Cardheader onClick={() => setExpanded(!expanded)}>
-        <H4>
-          {category.name}
-          {toggleIcon()}
-        </H4>
-      </Cardheader>
-      {expanded && (
-        <Cardbody>
-          <Grid>
-            {products}
-            <StyledCustomBox
-              onClick={() => setcustomInputExpanded(!customInputExpanded)}
-            >
-              <StyledFaIcon icon="plus" className="fa-2x" />
-            </StyledCustomBox>
-            {toggleCustomInput()}
-          </Grid>
-        </Cardbody>
-      )}
-    </StyledCard>
+    <>
+      <StyledCard>
+        <Cardheader onClick={() => setExpanded(!expanded)}>
+          <H4>
+            {category.name}
+            {toggleIcon()}
+          </H4>
+        </Cardheader>
+        {expanded && (
+          <Cardbody>
+            <Grid>
+              {products}
+              <StyledCustomBox
+                onClick={() => setcustomInputExpanded(!customInputExpanded)}
+              >
+                <StyledFaIcon icon="plus" className="fa-2x" />
+              </StyledCustomBox>
+              {toggleCustomInput()}
+            </Grid>
+          </Cardbody>
+        )}
+      </StyledCard>
+      <div>
+        {image ? (
+          <img src={image} alt="" style={{ width: "100%" }} />
+        ) : (
+          <input type="file" name="file" onChange={upload} />
+        )}
+      </div>
+    </>
   );
 };
 
