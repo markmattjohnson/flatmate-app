@@ -1,6 +1,6 @@
 describe("Input-form", () => {
   beforeEach(() => {
-    cy.visit("https://flatmate2019.herokuapp.com/todos");
+    cy.visit("/");
   });
 
   it("focuses input on load", () => {
