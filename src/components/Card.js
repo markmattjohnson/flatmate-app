@@ -94,33 +94,12 @@ const StyledCustomBox = styled.div`
   margin: 5px;
 `;
 
-const Card = ({ category, shoppingItems, onItemSelect, onClick }) => {
+const Card = ({ category, shoppingItems, onItemSelect }) => {
   const [expanded, setExpanded] = useState(false);
   const [customInputExpanded, setcustomInputExpanded] = useState(false);
   const [customInputValue, setcustomInputValue] = useState("");
   const [imagePrev, setImagePrev] = useState("");
   const [image, setImage] = useState("");
-
-  // function upload(event) {
-  //   const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
-
-  //   const formData = new FormData();
-  //   formData.append("file", image);
-  //   formData.append("upload_preset", PRESET);
-
-  //   axios
-  //     .post(url, formData, {
-  //       headers: {
-  //         "Content-type": "multipart/form-data"
-  //       }
-  //     })
-  //     .then()
-  //     .catch(err => console.error(err));
-  // }
-
-  // function onImageSave(response) {
-  //   setImageUpload(response.data.url);
-  // }
 
   function onImageChange(e) {
     setImage(e.target.files[0]);
@@ -207,7 +186,6 @@ const Card = ({ category, shoppingItems, onItemSelect, onClick }) => {
             id: uid(),
             name: customInputValue,
             image: res.data.secure_url
-            //   "http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_apple.jpg"
           };
 
           onItemSelect(newFruit);
@@ -220,7 +198,6 @@ const Card = ({ category, shoppingItems, onItemSelect, onClick }) => {
         id: uid(),
         name: customInputValue,
         image: ""
-        //   "http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_apple.jpg"
       };
 
       onItemSelect(newFruit);
