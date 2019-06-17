@@ -212,6 +212,7 @@ const Card = ({ category, shoppingItems, onItemSelect, onClick }) => {
 
           onItemSelect(newFruit);
           setImagePrev("");
+          setcustomInputValue("");
         })
         .catch(err => console.error(err));
     } else {
