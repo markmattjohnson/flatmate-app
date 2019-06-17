@@ -27,7 +27,6 @@ const StyledProduct = styled.p`
 `;
 
 export default function ShoppingItem({ name, image, onClick }) {
-  console.log(name);
   return (
     <StyledBox
       onClick={() => {

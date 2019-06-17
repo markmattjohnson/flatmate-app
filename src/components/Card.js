@@ -27,7 +27,19 @@ const StyledFaIcon = styled(FontAwesomeIcon)`
 const CustomInput = styled.input`
   text-align: center;
   margin-left: 220px;
+  margin-bottom: 5px;
   width: 30%;
+  padding: 5px;
+  border: 1px solid #72beb2;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  outline: none;
+`;
+
+const CustomInputUpload = styled.input`
+  text-align: center;
+  width: 100%;
   padding: 5px;
   border: 1px solid #72beb2;
   border-radius: 5px;
@@ -71,23 +83,50 @@ const Grid = styled.section`
   margin-bottom: 10px;
 `;
 
-const Card = ({ category, shoppingItems, onItemSelect }) => {
+const StyledCustomBox = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  background-color: #72beb2;
+  margin: 5px;
+`;
+
+const Card = ({ category, shoppingItems, onItemSelect, onClick }) => {
   const [expanded, setExpanded] = useState(false);
   const [customInputExpanded, setcustomInputExpanded] = useState(false);
   const [customInputValue, setcustomInputValue] = useState("");
+  const [imagePrev, setImagePrev] = useState("");
   const [image, setImage] = useState("");
 
-  const StyledCustomBox = styled.div`
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 90px;
-    background-color: #72beb2;
-    margin: 5px;
-  `;
-  console.log("before", shoppingItems);
+  // function upload(event) {
+  //   const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
+
+  //   const formData = new FormData();
+  //   formData.append("file", image);
+  //   formData.append("upload_preset", PRESET);
+
+  //   axios
+  //     .post(url, formData, {
+  //       headers: {
+  //         "Content-type": "multipart/form-data"
+  //       }
+  //     })
+  //     .then()
+  //     .catch(err => console.error(err));
+  // }
+
+  // function onImageSave(response) {
+  //   setImageUpload(response.data.url);
+  // }
+
+  function onImageChange(e) {
+    setImage(e.target.files[0]);
+    setImagePrev(URL.createObjectURL(e.target.files[0]));
+  }
+
   const products = shoppingItems.map(item => (
     <ShoppingItem
       key={item.id}
@@ -96,7 +135,6 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
       onClick={() => onItemSelect(item)}
     />
   ));
-  console.log("abc", products);
 
   function toggleIcon() {
     if (expanded === true) {
@@ -117,7 +155,6 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
   function handleCustomInputChange(event) {
     const value = event.target.value;
     setcustomInputValue(value);
-    console.log(customInputValue);
   }
 
   function toggleCustomInput() {
@@ -130,6 +167,17 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
             onChange={handleCustomInputChange}
             value={customInputValue}
           />
+          <div>
+            {imagePrev ? (
+              <img src={imagePrev} alt="" style={{ width: "100%" }} />
+            ) : (
+              <CustomInputUpload
+                type="file"
+                name="file"
+                onChange={onImageChange}
+              />
+            )}
+          </div>
         </form>
       );
     }
@@ -138,37 +186,44 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
   const handleSubmit = event => {
     event.preventDefault();
     if (!customInputValue) return;
-    const newFruit = {
-      id: uid(),
-      name: customInputValue
-      // image:
-      //   "http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_apple.jpg"
-    };
-    onItemSelect(newFruit);
-    console.log(newFruit);
-    console.log(customInputValue);
+
+    let newFruit;
+
+    if (image) {
+      const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
+
+      const formData = new FormData();
+      formData.append("file", image);
+      formData.append("upload_preset", PRESET);
+
+      axios
+        .post(url, formData, {
+          headers: {
+            "Content-type": "multipart/form-data"
+          }
+        })
+        .then(res => {
+          newFruit = {
+            id: uid(),
+            name: customInputValue,
+            image: res.data.secure_url
+            //   "http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_apple.jpg"
+          };
+
+          onItemSelect(newFruit);
+        })
+        .catch(err => console.error(err));
+    } else {
+      newFruit = {
+        id: uid(),
+        name: customInputValue,
+        image: ""
+        //   "http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_apple.jpg"
+      };
+
+      onItemSelect(newFruit);
+    }
   };
-
-  function upload(event) {
-    const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
-
-    const formData = new FormData();
-    formData.append("file", event.target.files[0]);
-    formData.append("upload_preset", PRESET);
-
-    axios
-      .post(url, formData, {
-        headers: {
-          "Content-type": "multipart/form-data"
-        }
-      })
-      .then(onImageSave)
-      .catch(err => console.error(err));
-  }
-
-  function onImageSave(response) {
-    setImage(response.data.url);
-  }
 
   return (
     <>
@@ -193,13 +248,6 @@ const Card = ({ category, shoppingItems, onItemSelect }) => {
           </Cardbody>
         )}
       </StyledCard>
-      <div>
-        {image ? (
-          <img src={image} alt="" style={{ width: "100%" }} />
-        ) : (
-          <input type="file" name="file" onChange={upload} />
-        )}
-      </div>
     </>
   );
 };
