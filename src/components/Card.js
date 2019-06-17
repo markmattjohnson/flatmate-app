@@ -211,6 +211,7 @@ const Card = ({ category, shoppingItems, onItemSelect, onClick }) => {
           };
 
           onItemSelect(newFruit);
+          setImagePrev("");
         })
         .catch(err => console.error(err));
     } else {
