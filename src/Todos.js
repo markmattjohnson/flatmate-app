@@ -32,6 +32,7 @@ function TodoForm({ addTodo }) {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
+        autoFocus
         className="input"
         value={value}
         placeholder="Todo hinzufügen"
