@@ -1,3 +1,5 @@
+import { isContext } from "vm";
+
 describe("Input-form", () => {
   beforeEach(() => {
     cy.visit("/");
@@ -12,5 +14,26 @@ describe("Input-form", () => {
     cy.get(".input")
       .type(typedText)
       .should("have.value", typedText);
+  });
+
+  context("Form submission", () => {
+    it("Adds a new todo on submit", () => {
+      const itemText = "Buy eggs";
+      cy.server();
+      cy.route("POST", "/api/todos", {
+        name: itemText,
+        id: 1,
+        isComplete: false
+      });
+
+      cy.get(".input")
+        .type(itemText)
+        .type("{enter}");
+      cy.get(".todo")
+        .should("have.length", 1)
+        .and("contain", itemText);
+    });
+
+    it.only("Shows an error message on a failed submission");
   });
 });
