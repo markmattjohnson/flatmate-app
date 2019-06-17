@@ -8,6 +8,7 @@ import Navigationbar from "./components/Navbar";
 
 const GlobalStyles = createGlobalStyle`
 
+
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
   * {
