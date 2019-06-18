@@ -3,7 +3,24 @@ import styled from "styled-components";
 import ShoppingItem from "./ShoppingItem";
 
 const Form = styled.form`
-  margin: 0 10px 0 10px;
+  @media (max-width: 374px) {
+    margin: 0 10px 0 10px;
+  }
+  @media (min-width: 375px) and (max-width: 499px) {
+    margin: 0 10px 0 10px;
+  }
+  @media (min-width: 500px) {
+    margin: 50px 10px 0 10px;
+  }
+  @media (min-width: 767px) {
+    margin: 80px 10px 0 10px;
+  }
+  @media (min-width: 1023px) {
+    margin: 130px 10px 0 10px;
+  }
+  @media (min-width: 1025px) {
+    margin: 200px 10px 0 10px;
+  }
 `;
 
 const SearchInput = styled.input`
