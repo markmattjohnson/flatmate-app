@@ -33,7 +33,5 @@ describe("Input-form", () => {
         .should("have.length", 1)
         .and("contain", itemText);
     });
-
-    it.only("Shows an error message on a failed submission");
   });
 });
