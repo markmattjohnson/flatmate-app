@@ -7,7 +7,7 @@ const Form = styled.form`
     margin: 0 10px 0 10px;
   }
   @media (min-width: 375px) and (max-width: 499px) {
-    margin: 0 10px 0 10px;
+    margin: 10px 10px 0 10px;
   }
   @media (min-width: 500px) {
     margin: 50px 10px 0 10px;
@@ -19,7 +19,7 @@ const Form = styled.form`
     margin: 130px 10px 0 10px;
   }
   @media (min-width: 1025px) {
-    margin: 200px 10px 0 10px;
+    margin: 150px 10px 0 10px;
   }
 `;
 
