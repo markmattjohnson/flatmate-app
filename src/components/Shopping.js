@@ -6,9 +6,11 @@ import { shoppingItems as items, categories as cats } from "../data-model";
 import ShoppingItem from "./ShoppingItem";
 import { getCartItems, getFromLocal, setToLocal } from "../services";
 
-const Grid = styled.section``;
+const ShoppingPage = styled.div`
+  padding-bottom: 100px;
+`;
 
-const GridShoppingItems = styled.div`
+const ShoppingItems = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -16,7 +18,7 @@ const GridShoppingItems = styled.div`
   text-align: start;
 `;
 
-const Shoppingcart = styled.p`
+const ShoppingItemsHeadline = styled.p`
   color: #72beb2;
   text-align: start;
   margin-left: 10px;
@@ -55,13 +57,13 @@ function Shopping() {
   }
 
   return (
-    <Grid>
+    <ShoppingPage>
       <Searchbar
         shoppingItems={shoppingItems}
         onItemSelect={handleItemSelect}
       />
-      <Shoppingcart>Einkaufswagen</Shoppingcart>
-      <GridShoppingItems>
+      <ShoppingItemsHeadline>Einkaufswagen</ShoppingItemsHeadline>
+      <ShoppingItems>
         {cartItems.map(item => (
           <ShoppingItem
             key={item.id}
@@ -70,13 +72,13 @@ function Shopping() {
             onClick={() => handleItemRemove(item)}
           />
         ))}
-      </GridShoppingItems>
+      </ShoppingItems>
       <Cards
         categories={categories}
         shoppingItems={shoppingItems}
         onItemSelect={handleItemSelect}
       />
-    </Grid>
+    </ShoppingPage>
   );
 }
 export default Shopping;

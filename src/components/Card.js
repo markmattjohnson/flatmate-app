@@ -80,7 +80,6 @@ const Grid = styled.section`
   flex-wrap: wrap;
   padding: 10px;
   min-height: 150px;
-  margin-bottom: 10px;
 `;
 
 const StyledCustomBox = styled.div`

@@ -8,7 +8,6 @@ import Navigationbar from "./components/Navbar";
 
 const GlobalStyles = createGlobalStyle`
 
-
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
   * {
@@ -32,6 +31,7 @@ const Grid = styled.div`
 const Main = styled.main`
   overflow-y: scroll;
 `;
+
 function App() {
   return (
     <Grid>
