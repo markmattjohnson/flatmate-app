@@ -54,6 +54,7 @@ export const H4 = styled.h4`
 export const Grid = styled.section`
   display: flex;
   flex-wrap: wrap;
+  margin-left: 5px;
   padding: 10px;
   min-height: 150px;
 `;
