@@ -1,27 +1,6 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import ShoppingItem from "./ShoppingItem";
-
-const Form = styled.form`
-  margin: 0 10px 0 10px;
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #72beb2;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  font-size: 18px;
-  outline: none;
-`;
-
-const Grid = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  margin-bottom: 10px;
-`;
+import { Form, SearchInput, Grid } from "../common/searchbarStyles";
 
 function Searchbar({ shoppingItems, onItemSelect }) {
   const [searchValue, setSearchValue] = useState("");
@@ -48,7 +27,7 @@ function Searchbar({ shoppingItems, onItemSelect }) {
     <Form className="app" id="searchForm">
       <SearchInput
         type="search"
-        placeholder="Search..."
+        placeholder="Suche..."
         onChange={handleSearchChange}
         value={searchValue}
       />

@@ -1,27 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
 import Searchbar from "./Searchbar";
-import styled from "styled-components";
 import { shoppingItems as items, categories as cats } from "../data-model";
 import ShoppingItem from "./ShoppingItem";
 import { getCartItems, getFromLocal, setToLocal } from "../services";
-
-const Grid = styled.section``;
-
-const GridShoppingItems = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 20px;
-  text-align: start;
-`;
-
-const Shoppingcart = styled.p`
-  color: #72beb2;
-  text-align: start;
-  margin-left: 10px;
-  font-family: roboto;
-`;
+import {
+  ShoppingPage,
+  ShoppingItems,
+  ShoppingItemsHeadline
+} from "../common/shoppingStyles";
 
 function Shopping() {
   const [shoppingItems] = useState(items);
@@ -55,13 +42,13 @@ function Shopping() {
   }
 
   return (
-    <Grid>
+    <ShoppingPage>
       <Searchbar
         shoppingItems={shoppingItems}
         onItemSelect={handleItemSelect}
       />
-      <Shoppingcart>Einkaufswagen</Shoppingcart>
-      <GridShoppingItems>
+      <ShoppingItemsHeadline>Einkaufswagen</ShoppingItemsHeadline>
+      <ShoppingItems>
         {cartItems.map(item => (
           <ShoppingItem
             key={item.id}
@@ -70,13 +57,13 @@ function Shopping() {
             onClick={() => handleItemRemove(item)}
           />
         ))}
-      </GridShoppingItems>
+      </ShoppingItems>
       <Cards
         categories={categories}
         shoppingItems={shoppingItems}
         onItemSelect={handleItemSelect}
       />
-    </Grid>
+    </ShoppingPage>
   );
 }
 export default Shopping;
