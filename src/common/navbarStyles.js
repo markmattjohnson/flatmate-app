@@ -8,5 +8,9 @@ export const Navigation = styled.footer`
   bottom: 0;
   width: 100%;
   margin-top: 10px;
-  background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 100%
+  );
 `;

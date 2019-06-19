@@ -58,6 +58,12 @@ export const Grid = styled.section`
   padding: 10px;
   margin-left: 5px;
   min-height: 150px;
+  @media (max-width: 320px) {
+    margin-left: 30px;
+  }
+  @media (min-width: 414px) {
+    margin-left: 25px;
+  }
 `;
 
 export const StyledCustomBox = styled.div`
