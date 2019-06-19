@@ -21,5 +21,7 @@ Sketch
 
 ## Check out the current status of my app
 
-![https://flatmate2019.herokuapp.com/](./public/images/qr-code.png)
+![QR-Code](./public/images/qr-code.png)
+
+https://flatmate2019.herokuapp.com/
 
