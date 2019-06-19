@@ -1,18 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const HeaderContainer = styled.div`
-  grid-row: 1;
-  z-index: 100;
-`;
-
-const HeaderImage = styled.img`
-  width: 100%;
-  z-index: 100;
-  @media (min-width: 1025px) {
-    height: 210px;
-  }
-`;
+import { HeaderContainer, HeaderImage } from "../common/headerStyles";
 
 function Header() {
   return (

@@ -1,29 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
 import Searchbar from "./Searchbar";
-import styled from "styled-components";
 import { shoppingItems as items, categories as cats } from "../data-model";
 import ShoppingItem from "./ShoppingItem";
 import { getCartItems, getFromLocal, setToLocal } from "../services";
-
-const ShoppingPage = styled.div`
-  padding-bottom: 100px;
-`;
-
-const ShoppingItems = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 20px;
-  text-align: start;
-`;
-
-const ShoppingItemsHeadline = styled.p`
-  color: #72beb2;
-  text-align: start;
-  margin-left: 10px;
-  font-family: roboto;
-`;
+import {
+  ShoppingPage,
+  ShoppingItems,
+  ShoppingItemsHeadline
+} from "../common/shoppingStyles";
 
 function Shopping() {
   const [shoppingItems] = useState(items);
