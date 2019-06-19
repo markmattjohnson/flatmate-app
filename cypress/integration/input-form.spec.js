@@ -1,5 +1,3 @@
-import { isContext } from "vm";
-
 describe("Input-form", () => {
   beforeEach(() => {
     cy.visit("/");
