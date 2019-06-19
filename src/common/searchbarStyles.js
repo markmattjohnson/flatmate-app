@@ -34,6 +34,4 @@ export const SearchInput = styled.input`
 export const Grid = styled.section`
   display: flex;
   flex-wrap: wrap;
-  /* padding: 10px; */
-  /* margin-bottom: 10px; */
 `;
