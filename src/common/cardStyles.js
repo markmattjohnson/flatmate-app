@@ -55,6 +55,7 @@ export const Grid = styled.section`
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
+  margin-left: 5px;
   min-height: 150px;
 `;
 
