@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
 
 export const Grid = styled.div`
   display: grid;
-  grid-template-rows: 80px auto 60px;
+  grid-template-rows: 80px auto;
   text-align: center;
   height: 100vh;
 `;

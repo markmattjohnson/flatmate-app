@@ -17,8 +17,8 @@ function App() {
             <Route exact path="/" component={Shopping} />
             <Route path="/todos" component={Todos} />
           </Switch>
+          <Navigationbar />
         </Main>
-        <Navigationbar />
       </Grid>
     </BrowserRouter>
   );
