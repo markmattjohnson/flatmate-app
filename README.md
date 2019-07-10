@@ -11,8 +11,6 @@ Two of the most frequently and longest discussed topics are shopping and househo
 ## Applied technologies
 ES8+
 React
-Node.js
-Express.js
 Styled-Components
 Git
 Cypress
